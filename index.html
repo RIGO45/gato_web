@@ -1,0 +1,58 @@
+<!-- Construir el formulario y el tablero -->
+
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gato entre amigos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+    <main class="tarjeta">
+        <p class="etiqueta">DOS JUGADORES · UN TABLERO</p>
+        <h1>Gato entre amigos</h1>
+        <p>Forma una línea de tres símbolos para ganar.</p>
+        <form id="registro">
+            <label for="nombre1">Jugador 1 · X</label>
+            <input id="nombre1" name="nombre1" maxlength="24" required placeholder="Escribe tu nombre"
+                autocomplete="off">
+            <label for="nombre2">Jugador 2 · O</label>
+            <input id="nombre2" name="nombre2" maxlength="24" required placeholder="Escribe tu nombre"
+                autocomplete="off">
+            <button class="principal" type="submit">Comenzar juego</button>
+        </form>
+        <section id="juego" hidden aria-label="Partida de Gato">
+            <p id="participantes"></p>
+            <p id="turno" role="status" aria-live="polite"></p>
+            <div id="tablero" aria-label="Tablero de tres por tres">
+                <button class="celda" data-indice="0" type="button"></button>
+                <button class="celda" data-indice="1" type="button"></button>
+                <button class="celda" data-indice="2" type="button"></button>
+                <button class="celda" data-indice="3" type="button"></button>
+                <button class="celda" data-indice="4" type="button"></button>
+                <button class="celda" data-indice="5" type="button"></button>
+                <button class="celda" data-indice="6" type="button"></button>
+                <button class="celda" data-indice="7" type="button"></button>
+                <button class="celda" data-indice="8" type="button"></button>
+            </div>
+            <button id="reiniciar" class="principal" type="button">
+                Nueva partida
+            </button>
+        </section>
+        <!-- Agregar la ventana flotante del resultado -->
+        <dialog id="resultado" aria-labelledby="tituloResultado">
+            <h2 id="tituloResultado">Resultado de la partida</h2>
+            <p id="mensajeResultado"></p>
+            <button id="revancha" class="principal" type="button">
+                Jugar de nuevo
+            </button>
+            <button id="verTablero" type="button">Ver tablero</button>
+        </dialog>
+    </main>
+</body>
+
+</html>
