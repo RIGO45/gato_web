@@ -12,6 +12,8 @@ let jugadores = { X: "", O: "" };
 let tablero = Array(9).fill("");
 let jugadorActual = "X";
 let partidaActiva = false;
+// AGREGADO: recuerda quién empieza como X para alternar los roles al terminar cada partida
+let jugadorInicial = "X";
 const combinaciones = [
     [0, 1, 2],
     [3, 4, 5],
@@ -66,6 +68,8 @@ function finalizarPartida(linea) {
     mensajeResultado.textContent = mensaje;
     renderizar();
     resultado.showModal();
+    // AGREGADO: al finalizar la partida se invierten los roles para la próxima
+    jugadorInicial = jugadorInicial === "X" ? "O" : "X";
 }
 
 function jugar(evento) {
@@ -91,7 +95,8 @@ celdas.forEach((celda) => {
 function reiniciarPartida() {
     if (resultado.open) resultado.close();
     tablero = Array(9).fill("");
-    jugadorActual = "X";
+    // AGREGADO: empieza el jugador que le corresponda según la alternancia
+    jugadorActual = jugadorInicial;
     partidaActiva = true;
     celdas.forEach((celda) => celda.classList.remove("ganadora"));
     renderizar();
