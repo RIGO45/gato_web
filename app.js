@@ -68,8 +68,6 @@ function finalizarPartida(linea) {
     mensajeResultado.textContent = mensaje;
     renderizar();
     resultado.showModal();
-    // AGREGADO: al finalizar la partida se invierten los roles para la próxima
-    jugadorInicial = jugadorInicial === "X" ? "O" : "X";
 }
 
 function jugar(evento) {
@@ -95,6 +93,8 @@ celdas.forEach((celda) => {
 function reiniciarPartida() {
     if (resultado.open) resultado.close();
     tablero = Array(9).fill("");
+    // AGREGADO: al presionar empezar de nuevo se invierten los roles para la próxima partida
+    jugadorInicial = jugadorInicial === "X" ? "O" : "X";
     // AGREGADO: empieza el jugador que le corresponda según la alternancia
     jugadorActual = jugadorInicial;
     partidaActiva = true;
